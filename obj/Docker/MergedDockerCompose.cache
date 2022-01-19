@@ -1,0 +1,21 @@
+services:
+  anow-messaging-api:
+    image: anow/code-challenge-api:messaging
+    ports:
+    - published: 5002
+      target: 5001
+  chatapp:
+    build:
+      context: C:\Users\Anon-Dev\source\repos\ChatApp
+      dockerfile: ChatApp/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: chatapp
+    ports:
+    - published: 5001
+      target: 5001
+    volumes:
+    - C:\Users\Anon-Dev\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Anon-Dev\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'

@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  anow-messaging-api:
+     image: anow/code-challenge-api:messaging
+     ports:
+          - 5002:5001
+  chatapp:
+    image: ${DOCKER_REGISTRY-}chatapp
+    ports:
+        - 5001:5001 
+    build:
+      context: .
+      dockerfile: ChatApp/Dockerfile
